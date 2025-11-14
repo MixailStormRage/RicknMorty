@@ -3,18 +3,19 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 android {
     namespace = "com.michael.ricknmorti"
     compileSdk {
-        version = release(36)
+        version = release(34)
     }
 
     defaultConfig {
         applicationId = "com.michael.ricknmorti"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -44,6 +45,22 @@ kotlin {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
+
+    // Kotlinx Coroutines
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+
+    //Serialization
+    implementation(libs.retrofit.converter.kotlinx.serialization)
+    implementation(libs.kotlinx.serialization.json)
+
+    //HttpClient
+    implementation(libs.retrofit)
+
+    //Images
+    implementation(libs.coil)
+    implementation(libs.coil.network.okhttp)
+
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
